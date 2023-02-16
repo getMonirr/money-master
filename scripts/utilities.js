@@ -1,10 +1,15 @@
 // get input value
 function getInputValueById(id) {
     const targetInput = document.getElementById(id);
-    return parseFloat(targetInput.value);
+    const value = targetInput.value;
+    if (isNaN(value) || value === '' || value < 0) {
+        alert(`${value === '' ? "don't allow empty ," : ''}Please enter Only positive number`);
+        return 0;
+    }
+    return parseFloat(value);
 }
 
-function getInnerTextById(id){
+function getInnerTextById(id) {
     const targetElement = document.getElementById(id);
     return parseFloat(targetElement.innerText);
 }
@@ -13,17 +18,17 @@ function getInnerTextById(id){
 function setInnerTextById(id, value) {
     const targetElement = document.getElementById(id);
     targetElement.innerText = value;
-} 
+}
 
 // percent calculator
-function percentCalculator(price,percent){
+function percentCalculator(price, percent) {
     return ((price * (percent / 100)));
 }
 
 // reset all input and  innerText 
-function resetAll(id){
+function resetAll(id) {
     const targetElement = document.getElementById(id);
-    if(targetElement.nodeName === 'INPUT'){
+    if (targetElement.nodeName === 'INPUT') {
         targetElement.value = '';
     }
     targetElement.innerText = 0;
